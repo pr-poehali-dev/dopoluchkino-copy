@@ -17,8 +17,27 @@ export default {
 				'2xl': '1400px'
 			}
 		},
+		fontFamily: {
+			'nunito': ['Nunito', 'sans-serif'],
+			'sans': ['Open Sans', 'system-ui', 'sans-serif']
+		},
 		extend: {
 			colors: {
+				'coral': {
+					DEFAULT: '#FF6B6B',
+					light: '#FFA8A8',
+					dark: '#E85A4F'
+				},
+				'mint': {
+					DEFAULT: '#4ECDC4',
+					light: '#7DE3DD',
+					dark: '#3AA89F'
+				},
+				'sky': {
+					DEFAULT: '#45B7D1',
+					light: '#7AC8E2',
+					dark: '#3691B0'
+				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -69,6 +88,18 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			keyframes: {
+				'fade-in': {
+					'0%': { opacity: '0', transform: 'translateY(20px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'slide-up': {
+					'0%': { opacity: '0', transform: 'translateY(40px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
 				'accordion-down': {
 					from: {
 						height: '0'
@@ -88,7 +119,10 @@ export default {
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.6s ease-out',
+				'slide-up': 'slide-up 0.8s ease-out',
+				'float': 'float 3s ease-in-out infinite'
 			}
 		}
 	},
