@@ -1,0 +1,15 @@
+{
+  "tests": [
+    {
+      "name": "Test health check",
+      "method": "GET",
+      "path": "/?test=health",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "status": "string",
+        "service": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

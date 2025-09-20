@@ -21,6 +21,7 @@ const Index = () => {
               <a href="#about" className="text-gray-600 hover:text-coral transition-colors">О нас</a>
               <a href="#faq" className="text-gray-600 hover:text-coral transition-colors">FAQ</a>
               <a href="#contact" className="text-gray-600 hover:text-coral transition-colors">Контакты</a>
+              <a href="/admin" className="text-gray-600 hover:text-coral transition-colors">Админ</a>
             </div>
             <Button className="bg-coral hover:bg-coral-dark text-white">
               Консультация
