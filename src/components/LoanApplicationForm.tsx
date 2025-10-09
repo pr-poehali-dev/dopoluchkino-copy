@@ -85,12 +85,38 @@ export const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({
       if (response.ok) {
         const result = await response.json();
         
-        toast({
-          title: "Заявка отправлена!",
-          description: `Номер заявки: ${result.application_number}. Мы свяжемся с вами в ближайшее время.`,
+        const amocrmData = {
+          fullName: `${formData.firstName} ${formData.lastName}`,
+          phone: formData.phone,
+          email: formData.email || 'no-email@example.com',
+          loanAmount: parseFloat(loanAmount),
+          loanTerm: parseInt(loanTerm),
+          monthlyPayment: calculation.monthly,
+          totalPayment: calculation.total,
+          income: formData.monthlyIncome ? parseFloat(formData.monthlyIncome) : 0
+        };
+
+        const amocrmResponse = await fetch('https://functions.poehali.dev/7fd8ed23-4433-463c-a6cd-87bf0ce2e686', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(amocrmData)
         });
 
-        // Очистка формы
+        let amocrmMessage = '';
+        if (amocrmResponse.ok) {
+          const amocrmResult = await amocrmResponse.json();
+          if (amocrmResult.success) {
+            amocrmMessage = ' Сделка создана в AmoCRM.';
+          }
+        }
+        
+        toast({
+          title: "Заявка отправлена!",
+          description: `Номер заявки: ${result.application_number}.${amocrmMessage} Мы свяжемся с вами в ближайшее время.`,
+        });
+
         setFormData({
           firstName: '',
           lastName: '',

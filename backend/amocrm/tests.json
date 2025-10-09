@@ -1,0 +1,46 @@
+{
+  "tests": [
+    {
+      "name": "Create lead in AmoCRM",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "fullName": "Иван Петров",
+        "phone": "+79001234567",
+        "email": "ivan@example.com",
+        "loanAmount": 500000,
+        "loanTerm": 24,
+        "monthlyPayment": 25000,
+        "totalPayment": 600000,
+        "income": 80000
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "lead_id": "number",
+        "contact_id": "number"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Handle missing credentials",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "fullName": "Test User",
+        "phone": "+79001111111",
+        "email": "test@test.com",
+        "loanAmount": 100000,
+        "loanTerm": 12,
+        "monthlyPayment": 9000,
+        "totalPayment": 108000,
+        "income": 50000
+      },
+      "expectedStatus": 500,
+      "expectedBody": {
+        "error": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
