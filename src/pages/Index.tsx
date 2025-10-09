@@ -59,6 +59,14 @@ const Index = () => {
                   <Icon name="Calculator" size={20} className="mr-2" />
                   Рассчитать кредит
                 </Button>
+                <Button 
+                  size="lg"
+                  className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-4"
+                  onClick={() => window.open('https://www.amocrm.ru', '_blank')}
+                >
+                  <Icon name="Link" size={20} className="mr-2" />
+                  AmoCRM интеграция
+                </Button>
               </div>
             </div>
             
